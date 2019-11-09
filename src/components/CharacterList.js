@@ -26,14 +26,9 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
-      <SearchForm />
-      {character.map(attribute => {
-        return (
-          <CharacterCard 
-            attribute = {attribute}
-          />
-        )
-      })}
+      {searchResults.map(item => {return (<SearchForm item = {item} />)})}
+      
+      {character.map(attribute => {return (<CharacterCard attribute = {attribute}/>)})}
     </section>
   );
 }
