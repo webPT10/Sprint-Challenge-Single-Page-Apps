@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const Button = styled.button`
   border-color: tomato
@@ -11,32 +11,18 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export default function SearchForm() {
-  const [searchForm, setSearchForm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleChange = event => {
-    setSearchForm(event.target.value)
-  }
-
-  useEffect(() => {
-    const results = characters.filter(character => 
-      character.toLowerCase().includes(searchForm)
-    );
-    setSearchResults(results)
-  }, [searchForm]);
-
+export default function SearchForm({ search, handleChange, handleSubmit }) {
 
   return (
     <section className="search-form">
-     <form onSubmit={}>
+     <form onSubmit={handleSubmit}>
 
        <label htmlFor='search' hidden>Search Form</label>
        <input 
           type='text'
           name='search'
           placeholder='search form...'
-          value={searchForm}
+          value={search}
           onChange={handleChange}
        />
        <Button type='submit'>Search!</Button>
